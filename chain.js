@@ -47,7 +47,7 @@ class Chain {
             if (dispatcher.isTraversing()) {
 
                 if (!dispatcher.isStateful()) {
-                    dispatcher.reset();
+                    dispatcher.resetState();
                 }
 
                 command.process(dispatcher);

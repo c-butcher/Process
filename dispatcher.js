@@ -1,32 +1,45 @@
 class Dispatcher {
     constructor() {
+        this._isRunning  = true;
         this._isStateful = true;
-        this.reset();
+        this._data       = new Map();
+
+        this.resetState();
     }
 
-    set(name, value) {
-        this._params.set(name, value);
+    setData(name, value) {
+        this._data.set(name, value);
+
+        return this;
     }
 
-    get(name, defaultValue) {
-        if (!this._params.has(name)) {
+    getData(name = null, defaultValue = null) {
+        if (name === null) {
+            return this._data;
+        }
+
+        if (!this._data.has(name)) {
             return defaultValue;
         }
 
-        return this._params.get(name);
+        return this._data.get(name);
     }
 
-    has(name) {
-        return this._params.has(name);
+    removeData(name) {
+        return this._data.delete(name);
     }
 
-    remove(name) {
-        return this._params.delete(name);
+    clearData() {
+        return this._data.clear();
     }
 
-    reset() {
+    hasData(name) {
+        return this._data.has(name);
+    }
+
+    resetState() {
         this._isRunning = true;
-        this._params = new Map();
+        this._data.clear();
     }
 
     setStateful(isStateful) {

@@ -36,9 +36,9 @@ class CalculatorDispatcher extends Dispatcher {
         this.value = 0;
     }
 
-    reset() {
+    resetState() {
         this.clear();
-        super.reset();
+        super.resetState();
     }
 }
 
