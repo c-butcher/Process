@@ -1,60 +1,43 @@
 class Dispatcher {
-    constructor() {
-        this._isRunning  = true;
-        this._isStateful = true;
-        this._data       = new Map();
 
-        this.resetState();
+    /**
+     *
+     * @param {boolean} isRunning
+     */
+    constructor(isRunning = false) {
+        if (this.constructor === Dispatcher) {
+            throw new Error("Abstract class Dispatcher cannot be instantiated into an object.");
+        }
+
+        this._isRunning   = isRunning;
     }
 
-    setData(name, value) {
-        this._data.set(name, value);
-
+    /**
+     * Tell the dispatcher to start processing the commands.
+     *
+     * @returns {Dispatcher}
+     */
+    startProcessing() {
+        this._isRunning = true;
         return this;
     }
 
-    getData(name = null, defaultValue = null) {
-        if (name === null) {
-            return this._data;
-        }
-
-        if (!this._data.has(name)) {
-            return defaultValue;
-        }
-
-        return this._data.get(name);
+    /**
+     * Tell the dispatcher to stop processing the commands.
+     *
+     * @returns {Dispatcher}
+     */
+    stopProcessing() {
+        this._isRunning = false;
+        return this;
     }
 
-    removeData(name) {
-        return this._data.delete(name);
-    }
-
-    clearData() {
-        return this._data.clear();
-    }
-
-    hasData(name) {
-        return this._data.has(name);
-    }
-
-    resetState() {
-        this._isRunning = true;
-        this._data.clear();
-    }
-
-    setStateful(isStateful) {
-        this._isStateful = isStateful;
-    }
-
-    isStateful() {
-        return this._isStateful;
-    }
-
-    setTraversing(isTraversing) {
-        this._isRunning = isTraversing;
-    }
-
-    isTraversing() {
+    /**
+     * Tells whether the commands are being processed.
+     *
+     * @returns {boolean}
+     */
+    isProcessing() {
         return this._isRunning;
     }
 }

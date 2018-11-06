@@ -1,7 +1,7 @@
 {
-  "name": "viewport-chains",
+  "name": "process.js",
   "version": "1.0.0",
-  "description": "",
+  "description": "Provides the tools required to build and execute a chain of commands.",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -11,7 +11,10 @@
   },
   "keywords": [
     "Chain",
-    "Command"
+    "Dispatcher",
+    "Command",
+    "Chain of Responsibility",
+    "Design Pattern"
   ],
   "author": "Chris Butcher <c.butcher@hotmail.com>",
   "license": "MIT",
