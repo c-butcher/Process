@@ -15,7 +15,7 @@ describe('Command', function() {
             replace: 'Chris!',
         });
 
-        assert.equal(3, cmd.args.size);
+        assert.equal(Object.values(cmd.getInputs()).length, cmd.args.size);
     });
 
     it('retains args supplied to constructor().', function() {
