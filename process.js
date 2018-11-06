@@ -4,7 +4,7 @@ const Dispatcher = require('./dispatcher');
 class Process {
 
     /**
-     * Create a new process and attach the commands to it.
+     * Create a new process and append the commands to it.
      *
      * @param {Command[]} commands
      */
@@ -12,21 +12,21 @@ class Process {
         this.commands = [];
         this.map = [];
         commands.forEach((command) => {
-            this.attach(command);
+            this.append(command);
         });
     }
 
     /**
-     * Attach a command to this process.
+     * Append a command to this process.
      *
      * @param {Command}    command
      * @param {Map|object} outputMap
      *
      * @returns {Process}
      */
-    attach(command, outputMap = {}) {
+    append(command, outputMap = {}) {
         if (typeof command !== 'function' || command.isPrototypeOf(Command)) {
-            throw new Error("Process can only attach Command objects");
+            throw new Error("Process can only append Command objects");
         }
 
         this.commands.push(command);

@@ -13,15 +13,15 @@ describe('Process', function() {
     });
 
 
-    it('can attach individual commands.', function() {
+    it('can append individual commands.', function() {
         let dispatcher = new Processing.TestDispatcher();
         let process = new Process();
 
         process
-            .attach(String.StringReplaceCommand, {
+            .append(String.StringReplaceCommand, {
                 string: 'string'
             })
-            .attach(String.StringLengthCommand, {
+            .append(String.StringLengthCommand, {
                 length: ''
             });
 
@@ -35,9 +35,9 @@ describe('Process', function() {
         assert.throws(() => {
             let process = new Process();
 
-            process.attach(Object.create({}), { output: 'input' });
+            process.append(Object.create({}), { output: 'input' });
 
-        }, /can only attach command/i);
+        }, /can only append command/i);
     });
 
 
