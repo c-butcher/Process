@@ -2,18 +2,9 @@ const Command    = require('./command');
 const Dispatcher = require('./dispatcher');
 
 class Process {
-
-    /**
-     * Create a new process and append the commands to it.
-     *
-     * @param {Command[]} commands
-     */
-    constructor(commands = []) {
+    constructor() {
         this.commands = [];
-        this.map = [];
-        commands.forEach((command) => {
-            this.append(command);
-        });
+        this.outputMaps = [];
     }
 
     /**
@@ -30,7 +21,7 @@ class Process {
         }
 
         this.commands.push(command);
-        this.map.push(new Map(Object.entries(outputMap)));
+        this.outputMaps.push(new Map(Object.entries(outputMap)));
 
         return this;
     }
@@ -58,7 +49,7 @@ class Process {
             let command = new this.commands[key](inputs);
             let outputs = command.process(dispatcher);
 
-            inputs = this._mapInputsFromOutputs(outputs, this.map[key]);
+            inputs = this._mapInputsFromOutputs(outputs, this.outputMaps[key]);
         }
 
         dispatcher.stopProcessing();
