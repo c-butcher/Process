@@ -25,7 +25,7 @@ class Process {
      * @returns {Process}
      */
     append(command, outputMap = {}) {
-        if (typeof command !== 'function' || command.isPrototypeOf(Command)) {
+        if (typeof command !== 'function' || !(command.prototype instanceof Command)) {
             throw new Error("Process can only append Command objects");
         }
 
