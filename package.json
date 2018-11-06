@@ -1,7 +1,7 @@
 {
   "name": "process.js",
   "version": "1.0.0",
-  "description": "Provides the tools required to build and execute a chain of commands.",
+  "description": "Provides the tools required to build and execute a process of commands.",
   "main": "index.js",
   "directories": {
     "test": "tests"
@@ -10,7 +10,7 @@
     "test": "./node_modules/mocha/bin/mocha tests"
   },
   "keywords": [
-    "Chain",
+    "Process",
     "Dispatcher",
     "Command",
     "Chain of Responsibility",
